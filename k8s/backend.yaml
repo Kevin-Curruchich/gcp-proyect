@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: default
+spec:
+  selector:
+    app: backend_mb
+  type: LoadBalancer
+  ports:
+  - name: backend-service
+    protocol: TCP
+    port: 8080 
+    targetPort: 8500
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  backend_mb
+  namespace: default
+  labels:
+    app:  backend_mb
+spec:
+  selector:
+    matchLabels:
+      app: backend_mb
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  backend_mb
+    spec:
+      containers:
+      - name: backend_mb
+        image:  kd0406/backend_mb:0.1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        env:
+          - name: ORACLE_USER
+            value: appuser
+          - name: ORACLE_PASS
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: app-pass
+          - name: ORACLE_CONNSTR
+            value: db-service:1521/xepdb1
+          - name: SERVER_PORT
+            value: '8500'
+          - name: API_KEY_EXCHANGE
+            value: 2DIuUGwo51oUvGZzW5H74aeRK4pZ10xM
+        ports:
+        - containerPort:  3000
+          name:  backend_mb

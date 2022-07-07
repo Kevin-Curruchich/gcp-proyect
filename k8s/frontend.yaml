@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-service
+  namespace: default
+spec:
+  selector:
+    app: frontend_mb
+  type: LoadBalancer
+  ports:
+  - name: front-service
+    protocol: TCP
+    port: 3000 
+    targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  frontend_mb
+  namespace: default
+  labels:
+    app:  frontend_mb
+spec:
+  selector:
+    matchLabels:
+      app: frontend_mb
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app:  frontend_mb
+    spec:
+      containers:
+      - name:  frontend_mb
+        image:  kd0406/frontend_mb:0.1.0
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        env:
+          - name: REACT_APP_BACKEND_URL
+            value: backend-service:8080
+        ports:
+        - containerPort:  3000
+          name:  frontend_mb

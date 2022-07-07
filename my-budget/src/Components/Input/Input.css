@@ -1,0 +1,39 @@
+.form__input{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input--label{
+    font-size: 12px;
+}
+
+.medium{
+    width: 140px;
+}
+
+.fit{
+    width: fit-content;
+}
+
+.form__input--input{
+    height: 30px;
+    padding: 5px 5px 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.10);
+}
+
+.form__input--input::placeholder{
+    opacity: 0.5;
+}
+
+.form__input--input:focus{
+    border: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.form__input--error {
+    color: red;
+    font-size: 11px;
+    font-weight: bold;
+}

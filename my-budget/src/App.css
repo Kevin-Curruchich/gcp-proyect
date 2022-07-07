@@ -1,0 +1,94 @@
+:root{
+    --primary-color: #F64C18;
+    --secondary-color: #EE9539;
+    --third-color: #9D6BDD;
+    --primary-gradient: linear-gradient(-35deg, var(--primary-color) -33.11%, var(--secondary-color) 99.14%);
+    --secondary-gradient: linear-gradient(15deg, #801C6A 0%, #9D6BDD 0.01%, #8BA7EF 100%);
+    --third-gradient: linear-gradient(160deg, #83489e 0%, #9558b1 50%, #c5302e 100%);
+    --fourth-gradient: linear-gradient(195deg, #f9655b 0%,  #ee821a 100%);
+    --five-gradient: linear-gradient(45deg, #f7ba2c 0%, #ecab12 10%, #ea5459 100%);
+    --six-gradient: linear-gradient(140deg, #9bafd9 0%,#7f9ee0 5%, #103783 100%);
+    --form-background-color: linear-gradient(360deg, rgba(117, 0, 252, 0.2) 0%, rgba(149, 82, 238, 0.1) 0.01%, rgba(178, 200, 255, 0.3) 100%);
+    --record-background-color: linear-gradient(-110deg,  rgba(0, 195, 255, 0.281) 0%, rgba(0, 255, 191, 0.164) 70%);
+}
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+    font-family: 'Poppins', sans-serif;
+}   
+
+main {
+    min-height: 80vh;
+    padding: 20px 25px;
+}
+
+hr{
+    height: 1px;
+    width: 70%;
+    margin: 5px 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hr--completed{
+    width: 100%;
+}
+.main--onboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+    height: 40px;
+    padding: 4px 30px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: 500ms ease-in-out;
+}
+
+.button:hover {
+    transform: scale(1.05) ;
+}
+
+.button:active{
+    transform: scale(0.98);
+}
+
+.button--option{
+    align-self: center;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.button--small {
+    width: 100px;
+}
+
+.button--large {
+    width: 130px;
+}
+
+.button--xlarge {
+    width: 160px;
+    height: 50px;
+    border-radius: 12px;
+}
+
+.solid {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.border {
+    border: 2px solid #F64C18;
+    background: transparent;
+    color: #F64C18;
+}
